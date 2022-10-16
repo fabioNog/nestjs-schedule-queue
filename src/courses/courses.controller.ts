@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Param, Post, Res } from '@nestjs/common';
+import { 
+    Body, 
+    Controller, 
+    Delete, 
+    Get, 
+    Param, 
+    Patch, 
+    Post, 
+    Res
+     } from '@nestjs/common';
 import { response } from 'express';
 
 @Controller('courses')
@@ -27,5 +36,15 @@ export class CoursesController {
     @Post()
     create(@Body('name') body){
         return body
+    }
+
+    @Patch(':id')
+    update(@Param('id') id:string,@Body() body){
+        return `Atualizaçao #${id}`
+    }
+
+    @Delete(':id')
+    remove(@Param('id') id:string){
+        return `Removendo curso #${id}`
     }
 }
