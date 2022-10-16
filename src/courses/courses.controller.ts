@@ -9,9 +9,14 @@ import {
     Res
      } from '@nestjs/common';
 import { response } from 'express';
+import { CoursesService } from './courses.service';
 
 @Controller('courses')
 export class CoursesController {
+
+    constructor(private readonly courseServices: CoursesService){
+        
+    }
 /*    @Get()
     findAll(){
         return 'Listagem de Cursos';
