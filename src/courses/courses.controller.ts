@@ -1,55 +1,51 @@
-import { 
-    Body, 
-    Controller, 
-    Delete, 
-    Get, 
-    Param, 
-    Patch, 
-    Post, 
-    Res
-     } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  Res,
+} from '@nestjs/common';
 import { response } from 'express';
 import { CoursesService } from './courses.service';
 
 @Controller('courses')
 export class CoursesController {
-
-    constructor(private readonly courseServices: CoursesService){
-        
-    }
-/*    @Get()
+  constructor(private readonly courseServices: CoursesService) {}
+  /*    @Get()
     findAll(){
         return 'Listagem de Cursos';
     }*/
 
-    @Get()
-    findAll(@Res() response){
-        return response.status(200).send('Listagem de Cusos');
-    }
-    
+  @Get()
+  findAll() {
+    return this.courseServices.findAll();
+  }
 
-    @Get(':id')
-    findOne(@Param() params){
-        return `Curso # ${params.id}`
-    }
+ /* @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.courseServices.findOne(id);
+  } */
 
-    /*@Post()
+  @Post()
     create(@Body() body){
-        return body
-    }*/
-
-    @Post()
-    create(@Body('name') body){
-        return body
+        return this.courseServices.create(body);
     }
 
-    @Patch(':id')
-    update(@Param('id') id:string,@Body() body){
-        return `Atualizaçao #${id}`
-    }
+  /* @Post()
+  create(@Body('name') body) {
+    return this.courseServices.create(body);
+  }*/
 
-    @Delete(':id')
-    remove(@Param('id') id:string){
-        return `Removendo curso #${id}`
-    }
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() body) {
+    return this.courseServices.update(id, body);
+  }
+
+  @Delete(':id')
+  remove(@Param('id') id: string) {
+    return this.courseServices.remove(id);
+  }
 }
