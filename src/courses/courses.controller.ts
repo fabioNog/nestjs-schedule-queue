@@ -14,20 +14,16 @@ import { CoursesService } from './courses.service';
 @Controller('courses')
 export class CoursesController {
   constructor(private readonly courseServices: CoursesService) {}
-  /*    @Get()
-    findAll(){
-        return 'Listagem de Cursos';
-    }*/
 
   @Get()
   findAll() {
     return this.courseServices.findAll();
   }
 
- /* @Get(':id')
+  @Get(':id')
   findOne(@Param('id') id: string) {
     return this.courseServices.findOne(id);
-  } */
+  } 
 
   @Post()
     create(@Body() body){
