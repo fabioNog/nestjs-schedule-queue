@@ -11,6 +11,8 @@ import {
 import { response } from 'express';
 import { CoursesService } from './courses.service';
 
+import {CreateCourseDto} from './dto/create-course.dto';
+
 @Controller('courses')
 export class CoursesController {
   constructor(private readonly courseServices: CoursesService) {}
@@ -26,8 +28,8 @@ export class CoursesController {
   } 
 
   @Post()
-    create(@Body() body){
-        return this.courseServices.create(body);
+    create(@Body() CreateCourseDto: CreateCourseDto){
+        return this.courseServices.create(CreateCourseDto);
     }
 
   /* @Post()
