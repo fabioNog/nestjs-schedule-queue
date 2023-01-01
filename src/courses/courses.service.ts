@@ -9,7 +9,7 @@ export class CoursesService {
             id: 1,
             name: 'Nest',
             description: 'Fundamentos do Framework',
-            tags: ['node.js','nest.js','javascript']
+            tags: ['node.js','nest.js','javascript','pascal']
         }
     ];
 
@@ -30,6 +30,7 @@ export class CoursesService {
 
     create(createCourseDto: any){
         this.courses.push(createCourseDto);
+        return createCourseDto;
     }
 
     update(id: string, updateCourseDto: any){
